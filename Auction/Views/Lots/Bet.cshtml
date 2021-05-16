@@ -1,0 +1,30 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ы</title>
+</head>
+<body>
+<div>
+    <form method="post">
+        <input type="hidden" value="1" name="ProfileId"/>
+        <input type="hidden" value="@ViewBag.LotId" name="LotId"/>
+        <table>
+            <tr>
+                <td>Введите вашу ставку</td>
+                <td><input type="text" name="Bet"/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Отправить"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
