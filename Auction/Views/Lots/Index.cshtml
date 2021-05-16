@@ -1,9 +1,9 @@
-﻿@model dynamic
+﻿@using Auction.Models
+@model dynamic
 
 @{
-    Layout = null;
+    Layout = null;//"~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" href="C:\Users\nanan\RiderProjects\Auction\Auction\wwwroot\site.css">
 <!DOCTYPE html>
 
 <html>
@@ -11,6 +11,7 @@
     <title>title</title>
 </head>
 <body>
+<div><td><a href="/Lots/CreateLot">Добавить лот</a></td></div>
 <div class="Lot">
     <table>
         <tr>
@@ -18,6 +19,7 @@
             <td>Описание</td>
             <td>Цена</td>
             <td>Дата окончания</td>
+            <td>Текущая ставка</td>
             <td></td>
         </tr>
         @foreach (var x in ViewBag.Lots)
@@ -31,11 +33,13 @@
                     <p>@x.StartPrice</p></td>
                 <td>
                     <p>@x.EndOfAuctionDate</p></td>
-                <td><a href="/Lots/Bet/@x.Id">Сделать ставку</a></td>
+                <td>
+                    <p>@x.CurrentPrice</p></td>
+                <td><a href="/Lots/Bet?lotId=@x.Id">Сделать ставку</a></td>
             </tr>
         }
     </table>
-    
+
 </div>
 </body>
 </html>

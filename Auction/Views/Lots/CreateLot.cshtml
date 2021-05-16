@@ -1,0 +1,38 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = null;
+}
+
+<form method="post">
+    <input type="hidden" value="@ViewBag.LastLotId" name="Id"/>
+    <input type="hidden" value="0" name="SoldOut"/>
+    <table>
+        <tr>
+            <td>Введите имя лота</td>
+            <td><input type="text" name="Name"/></td>
+        </tr>
+        <tr>
+            <td>Введите описание лота</td>
+            <td><input type="text" name="Description"/></td>
+        </tr>
+        <tr>
+            <td>Введите ссылку на фотографию</td>
+            <td><input type="text" name="Image"/></td>
+        </tr>
+        <tr>
+            <td>Введите начальную цену</td>
+            <td><input type="text" name="StartPrice"/></td>
+        </tr>
+        <tr>
+            <td>Введите дату окончания аукциона</td>
+            <td><input type="text" name="EndOfAuctionDate"/></td>
+        </tr>
+
+
+        <tr>
+            <td><input type="submit" value="Отправить"/></td>
+        </tr>
+    </table>
+</form>

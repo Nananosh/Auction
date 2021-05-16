@@ -58,7 +58,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #7777;
   text-align: left;
   background-color: #fff;
 }
@@ -518,8 +518,9 @@ kbd {
   padding: 0.2rem 0.4rem;
   font-size: 87.5%;
   color: #fff;
-  background-color: #212529;
+  background-color: #7777;
   border-radius: 0.2rem;
+
 }
 
 kbd kbd {
@@ -531,7 +532,7 @@ kbd kbd {
 pre {
   display: block;
   font-size: 87.5%;
-  color: #212529;
+  color: #7777;
 }
 
 pre code {
@@ -2378,7 +2379,7 @@ textarea.form-control {
 .btn {
   display: inline-block;
   font-weight: 400;
-  color: #212529;
+  color: #7777;
   text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
@@ -8146,7 +8147,8 @@ button.bg-dark:focus {
 
 .pb-3,
 .py-3 {
-  padding-bottom: 1rem !important;
+    margin-top: 100px;
+    padding-bottom: 1rem !important;
 }
 
 .pl-3,

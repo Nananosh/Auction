@@ -10,9 +10,10 @@ namespace Auction.Models
         public string Image { get; set; }
         public int StartPrice { get; set; }
         public int CurrentPrice { get; set; }
+        public int SoldOut { get; set; }
         public string EndOfAuctionDate { get; set; }
 
-        public Lot(int id, string name, string description, string image, int startPrice, int currentPrice, string endOfAuctionDate)
+        public Lot(int id, string name, string description, string image, int startPrice, int currentPrice,int soldOut, string endOfAuctionDate)
         {
             Id = id;
             Name = name;
@@ -20,7 +21,13 @@ namespace Auction.Models
             Image = image;
             StartPrice = startPrice;
             CurrentPrice = currentPrice;
+            SoldOut = soldOut;
             EndOfAuctionDate = endOfAuctionDate;
+        }
+
+        public Lot()
+        {
+            
         }
     }
 }

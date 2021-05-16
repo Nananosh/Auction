@@ -14,7 +14,7 @@ namespace Auction.Controllers
         // GET
         public IActionResult Index()
         {
-            var lots = Factory.GetAllLots(DatabaseConnection.GetTable("lots"));
+            var lots = Factory.GetAllLots(DatabaseConnection.GetLotInformation());
             ViewBag.lots = lots;
             return View();
         }
@@ -28,6 +28,20 @@ namespace Auction.Controllers
         public void Bet(Bets bets)
         {
             Factory.InsertBets(bets.ProfileId,bets.LotId,bets.Bet);
+            Console.WriteLine($"{bets.ProfileId},{bets.LotId},{bets.Bet}");
+        }
+        [HttpGet]
+        public IActionResult CreateLot()
+        {
+            var lastLotId = Factory.GetLastLotId(DatabaseConnection.GetLotInformation());
+            ViewBag.LastLotId = lastLotId+1;
+            return View();
+        }
+        [HttpPost]
+        public void CreateLot(Lot lot)
+        {
+            Factory.InsertLots(lot);
+            Console.WriteLine(lot);
         }
     }
 }

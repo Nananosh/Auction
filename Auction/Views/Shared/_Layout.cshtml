@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="@Url.Content("~/css/linearicons.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/font-awesome.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/themify-icons.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/bootstrap.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/owl.carousel.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/nice-select.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/nouislider.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/ion.rangeSlider.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/ion.rangeSlider.skinFlat.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/magnific-popup.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/main.css")">
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SuperMegaStore5000</title>
+    <style type="text/css">
+        .stylesss {
+            margin-top: 100px;
+        }
+    </style>
+
+</head>
+<body>
+    <header class="header_area sticky-header">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light main_box">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SuperMegaStore5000</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item active"><a a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Главная</a></li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                   aria-expanded="false">Магазин</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Каталог</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Контакты</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+                            <li class="nav-item">
+                                <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container" >
+        <div class="stylesss">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+    <footer class="footer-area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3  col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>О нас</h6>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
+                            magna aliqua.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3  col-md-6 col-sm-6">
+                    <div class="single-footer-widget mail-chimp">
+                        <h6 class="mb-20">Фото Instagram</h6>
+                        <ul class="instafeed d-flex flex-wrap">
+                            <li><img src="@Url.Content("~/img/i1.jpg")" alt=""></li>
+                            <li><img src="@Url.Content("~/img/i2.jpg")" alt=""></li>
+                            <li><img src="~/img/i3.jpg" alt=""></li>
+                            <li><img src="~/img/i4.jpg" alt=""></li>
+                            <li><img src="~/img/i5.jpg" alt=""></li>
+                            <li><img src="~/img/i6.jpg" alt=""></li>
+                            <li><img src="~/img/i7.jpg" alt=""></li>
+                            <li><img src="~/img/i8.jpg" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Подпишись на нас</h6>
+                        <p>В социальных сетях</p>
+                        <div class="footer-social d-flex align-items-center">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-behance"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+                <p class="footer-text m-0">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script>Все права защищены | Сайт разработан <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Medvedev</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+            crossorigin="anonymous"></script>
+    <script src="~/js/vendor/bootstrap.min.js"></script>
+    <script src="~/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <script src="~/js/jquery.sticky.js"></script>
+    <script src="~/js/nouislider.min.js"></script>
+    <script src="~/js/countdown.js"></script>
+    <script src="~/js js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <!--gmaps Js-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="~/js/gmaps.min.js"></script>
+    <script src="~/js/main.js"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)*@
+</body>
+</html>
