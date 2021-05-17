@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="auction.sqlite [2]" uuid="779617a5-231c-4aa9-a996-a85efd3cb80d">
+    <data-source source="LOCAL" name="auction.sqlite" uuid="afe2201b-caeb-4750-8c8d-cdc685cbdcc0">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/Auction/DataBaseConnection/auction.sqlite</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\nanan\RiderProjects\Auction\Auction\DataBaseConnection\auction.sqlite</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

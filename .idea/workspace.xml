@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="61cf7570-af03-4915-94cb-f3d48df3bd38" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Auction/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Auction/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/Auction.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/Auction.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/DataBaseConnection/auction.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/DataBaseConnection/auction.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/Views/Lots/AllLots.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/Views/Lots/Bet.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/Views/Lots/Bet.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/Views/Lots/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/Views/Lots/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/Views/Shared/_Layout.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/Auction.runtimeconfig.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/System.Configuration.ConfigurationManager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/System.Configuration.ConfigurationManager.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/System.Security.Cryptography.ProtectedData.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/ref/Auction.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/ref/Auction.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/bin/Debug/net5.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Auction.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Auction.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Auction.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Auction.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Auction.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Auction.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.RazorCoreGenerate.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.RazorCoreGenerate.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Auction.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Razor/Views/Lots/Bet.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Razor/Views/Lots/Bet.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Razor/Views/Lots/CreateLot.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Razor/Views/Lots/CreateLot.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Razor/Views/Lots/Index.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Razor/Views/Lots/Index.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Razor/Views/Shared/_Layout.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Razor/Views/Shared/_Layout.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/ref/Auction.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/ref/Auction.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/staticwebassets/Auction.StaticWebAssets.Manifest.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/staticwebassets/Auction.StaticWebAssets.Manifest.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/staticwebassets/Auction.StaticWebAssets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/Debug/net5.0/staticwebassets/Auction.StaticWebAssets.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Auction/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Auction/obj/rider.project.restore.info" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1sgALTpe4HC26DEAN8QOZyWKK7T" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="61cf7570-af03-4915-94cb-f3d48df3bd38" name="Default Changelist" comment="" />
+      <created>1621283816486</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621283816486</updated>
+      <workItem from="1621283830360" duration="23000" />
+      <workItem from="1621283876638" duration="18000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

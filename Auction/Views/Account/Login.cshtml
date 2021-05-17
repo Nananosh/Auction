@@ -1,0 +1,30 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+@{
+    var returnUrl = ViewData["ReturnUrl"] as string;
+    var error = TempData["Error"] as string;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Вход</title>
+</head>
+<body>
+<div>
+    <h1>Вход</h1>
+    @if (!string.IsNullOrEmpty(error))
+    {
+        <h2 class="alert-danger" style="padding: 10px;">@error</h2>
+    }
+    <form action="/login?ReturnUrl=@System.Net.WebUtility.UrlEncode(returnUrl)" method="post">
+        <input type="text" name="Nickname" placeholder="Nickname"/>
+        <input type="password" name="Password" placeholder="Password"/>
+        <input type="submit" value="login"/>
+    </form>
+</div>
+</body>
+</html>

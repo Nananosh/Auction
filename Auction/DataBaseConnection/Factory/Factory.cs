@@ -6,6 +6,19 @@ namespace Auction.DataBaseConnection.Factory
 {
     public static class Factory
     {
+        public static List<Account> GetProfielInformation(SQLiteDataReader dataReader)
+        {
+            List<Account> list = new List<Account>();
+            while (dataReader.Read())
+            {
+                var id = dataReader.GetInt32(0);
+                var nickname = dataReader.GetString(1);
+                var password = dataReader.GetString(2);
+                var balance = dataReader.GetInt32(3);
+                list.Add(new Account(id,nickname,password,balance));
+            }
+            return list;
+        }
         public static List<Lot> GetAllLots(SQLiteDataReader dataReader)
         {
             List<Lot> list = new List<Lot>();
@@ -40,6 +53,11 @@ namespace Auction.DataBaseConnection.Factory
         public static void InsertLots(Lot lot)
         {
             DatabaseConnection.InsertLots(lot);
+        }
+
+        public static void InsertProfile(Account account)
+        {
+            DatabaseConnection.InsertProfile(account);
         }
 
         public static void UpdateCurrentPrice(int lotId)
