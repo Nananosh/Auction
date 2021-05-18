@@ -1,4 +1,5 @@
 ﻿@using Auction.Models
+@using Auction.TimerSoldOut
 @model dynamic
 
 @{
@@ -11,6 +12,10 @@
     <title>title</title>
 </head>
 <body>
+@{
+    SoldOut.SoldOutTimer();
+}
+;
 <a href="/Account/Register">Зарегистрироваться</a>
 <a href="/Account/LogOut">Выйти</a>
 <div><td><a href="/Lots/CreateLot">Добавить лот</a></td></div>

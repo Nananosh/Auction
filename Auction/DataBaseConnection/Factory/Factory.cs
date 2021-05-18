@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Common.CommandTrees;
 using System.Data.SQLite;
 using Auction.Models;
@@ -7,6 +9,25 @@ namespace Auction.DataBaseConnection.Factory
 {
     public static class Factory
     {
+        public static (int, int) GetProfileIdAndMaxBet(SQLiteDataReader dataReader)
+        {
+            var idAndMaxBet=(0,0);
+            while (dataReader.Read())
+            {
+                idAndMaxBet = (dataReader.GetInt32(0),dataReader.GetInt32(1));
+            }
+            return idAndMaxBet;
+        }
+        public static List<(int,string)> GetEndOfAuctionDate(SQLiteDataReader dataReader)
+        {
+            List<(int lotId, string EndOfAuctionDate)> list = new List<(int lotId, string EndOfAuctionDate)>();
+            while (dataReader.Read())
+            {
+                var idAndEndDate  = (lotId :dataReader.GetInt32(0),EndOfAuctionDate:dataReader.GetString(1));
+                list.Add(idAndEndDate);
+            }
+            return list;
+        }
         public static List<Account> GetProfielInformation(SQLiteDataReader dataReader)
         {
             List<Account> list = new List<Account>();
@@ -65,9 +86,20 @@ namespace Auction.DataBaseConnection.Factory
         {
             DatabaseConnection.InsertLotOwners(profileId,lotId);
         }
+
+        public static void UpdateLotOwners(int profileId, int lotId)
+        {
+            DatabaseConnection.UpdateLotOwners(profileId,lotId);
+        }
+
+        public static void UpdateLotSodlOut(int lotId)
+        {
+            DatabaseConnection.UpdateLotSodlOut(lotId);
+        }
         public static void UpdateCurrentPrice(int lotId)
         {
             
         }
     }
+    
 }
