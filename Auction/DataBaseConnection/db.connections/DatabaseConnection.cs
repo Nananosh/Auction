@@ -14,10 +14,9 @@ namespace Auction.DataBaseConnection
         {
             using var command = _connection.CreateCommand();
             command.Connection = _connection;
-            command.CommandText = $"select * from profiles";
+            command.CommandText = $"select id,nickname,password,balanace from profiles";
             return command.ExecuteReader();
         }
-
         public static SQLiteDataReader GetLotInformation()
         {
             using var command = _connection.CreateCommand();
@@ -46,20 +45,32 @@ namespace Auction.DataBaseConnection
             command.ExecuteNonQuery();
         }
 
-        public static void InsertLots(Lot lot)
+        public static void InsertLotOwners(int profileId,int lotId)
+        {
+            using var command = _connection.CreateCommand();
+            command.Connection = _connection;
+            command.CommandText = $"INSERT INTO lot_owners(profile_id,lot_id) VALUES (:profileId,:lotId);";
+            command.Parameters.AddWithValue("profileId", profileId);
+            command.Parameters.AddWithValue("lotId", lotId);
+            Console.WriteLine(command.CommandText);
+            command.ExecuteNonQuery();   
+        }
+
+        public static void InsertLots(Lot lot, int profileId)
         {
             using var command = _connection.CreateCommand();
             command.Connection = _connection;
             command.CommandText = $"INSERT INTO lots(name, description, image, start_price,  sold_out, ending_date) " +
                                   $"VALUES (:name, :description, :image, :startPrice,  :soldOut, :endingDate);" +
-                                  $"INSERT INTO bets(lot_id,bet_price)" +
-                                  $"VALUES (:lotId, :currentPrice)";
+                                  $"INSERT INTO bets(profile_id,lot_id,bet_price)" +
+                                  $"VALUES (:profileId,:lotId, :currentPrice)";
             command.Parameters.AddWithValue("name", lot.Name);
             command.Parameters.AddWithValue("description", lot.Description);
             command.Parameters.AddWithValue("image", lot.Image);
             command.Parameters.AddWithValue("startPrice", lot.StartPrice);
             command.Parameters.AddWithValue("soldOut", lot.SoldOut);
             command.Parameters.AddWithValue("endingDate", lot.EndOfAuctionDate);
+            command.Parameters.AddWithValue("profileId", profileId);
             command.Parameters.AddWithValue("lotId", lot.Id);
             command.Parameters.AddWithValue("currentPrice", lot.StartPrice);
             Console.WriteLine(command.CommandText);
@@ -70,18 +81,19 @@ namespace Auction.DataBaseConnection
         {
             using var command = _connection.CreateCommand();
             command.Connection = _connection;
-            command.CommandText = $"INSERT INTO profiles(nickname,password) VALUES (:nickname,:password);";
+            command.CommandText = $"INSERT INTO profiles(nickname,password,balanace) VALUES (:nickname,:password,:balanace);";
             command.Parameters.AddWithValue("nickname", account.Nickname);
             command.Parameters.AddWithValue("password", account.Password);
+            command.Parameters.AddWithValue("balanace", account.Balanace);
             Console.WriteLine(command.CommandText);
             command.ExecuteNonQuery();
         }
-        public static void UpdateProfielBalance(int newBalance)
+        public static void UpdateProfielBalanace(int newBalanace)
         {
             using var command = _connection.CreateCommand();
             command.Connection = _connection;
-            command.CommandText = $"Update profiel Set balance = newBanace";
-            command.Parameters.AddWithValue("balance", newBalance);
+            command.CommandText = $"Update profile Set balanace = newBanace";
+            command.Parameters.AddWithValue("balanace", newBalanace);
         }
     }
 }

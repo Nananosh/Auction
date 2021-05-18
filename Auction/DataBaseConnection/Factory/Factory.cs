@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Data.SQLite;
 using Auction.Models;
 
@@ -14,8 +15,8 @@ namespace Auction.DataBaseConnection.Factory
                 var id = dataReader.GetInt32(0);
                 var nickname = dataReader.GetString(1);
                 var password = dataReader.GetString(2);
-                var balance = dataReader.GetInt32(3);
-                list.Add(new Account(id,nickname,password,balance));
+                var balanace = dataReader.GetInt32(3);
+                list.Add(new Account(id,nickname,password,balanace));
             }
             return list;
         }
@@ -50,9 +51,9 @@ namespace Auction.DataBaseConnection.Factory
         {
             DatabaseConnection.InsertBets(profileId,lotId,bet);
         }
-        public static void InsertLots(Lot lot)
+        public static void InsertLots(Lot lot, int profileId)
         {
-            DatabaseConnection.InsertLots(lot);
+            DatabaseConnection.InsertLots(lot, profileId);
         }
 
         public static void InsertProfile(Account account)
@@ -60,6 +61,10 @@ namespace Auction.DataBaseConnection.Factory
             DatabaseConnection.InsertProfile(account);
         }
 
+        public static void InsertLotOwners(int profileId, int lotId)
+        {
+            DatabaseConnection.InsertLotOwners(profileId,lotId);
+        }
         public static void UpdateCurrentPrice(int lotId)
         {
             

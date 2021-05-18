@@ -6,6 +6,7 @@
 }
 
 <form method="post">
+    <input type="hidden" value="@foreach (var c in User.Claims){@c.Value;}" name="profileId"/>;
     <input type="hidden" value="@ViewBag.LastLotId" name="Id"/>
     <input type="hidden" value="0" name="SoldOut"/>
     <table>

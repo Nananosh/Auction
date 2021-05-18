@@ -8,9 +8,11 @@
 <body></body>
 @if (User.Identity.IsAuthenticated)
 {
-    @User.Identity.Name
+    @User.Claims;
     @foreach (var c in User.Claims)
     {
+        @c.Value;
+        <br>
         <li>@c.Type: @c.Value</li>
     }
     <ul class="navbar-nav flex-grow-1">

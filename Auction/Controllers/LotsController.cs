@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Common.CommandTrees;
+using System.Reflection.Metadata.Ecma335;
 using Auction.DataBaseConnection;
 using Auction.DataBaseConnection.Factory;
 using Auction.Models;
@@ -41,9 +42,10 @@ namespace Auction.Controllers
             return View();
         }
         [HttpPost]
-        public void CreateLot(Lot lot)
+        public void CreateLot(Lot lot, int profileId)
         {
-            Factory.InsertLots(lot);
+            Factory.InsertLots(lot, profileId);
+            Factory.InsertLotOwners(profileId,lot.Id);
             Console.WriteLine(lot);
         }
     }

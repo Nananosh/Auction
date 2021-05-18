@@ -30,8 +30,6 @@ namespace Auction.Controllers
             if (ModelState.IsValid)
             {
                 Factory.InsertProfile(account);
-                ModelState.Clear();
-                ViewBag.Message = "Аккаунт зарегистрирован";
             }
         }
         [HttpGet("login")]
@@ -56,10 +54,10 @@ namespace Auction.Controllers
             if (user != null)
             {
                 var claims = new List<Claim>();
-                claims.Add(new Claim("Nickname",user.Nickname));
-                claims.Add(new Claim(ClaimTypes.NameIdentifier,account.Nickname));
+                // claims.Add(new Claim("Nickname",user.Nickname));
+                // claims.Add(new Claim(ClaimTypes.Name,account.Nickname));
                 claims.Add(new Claim("Id",user.Id.ToString()));
-                claims.Add(new Claim(ClaimTypes.NameIdentifier,account.Id.ToString()));
+                // claims.Add(new Claim(ClaimTypes.NameIdentifier,account.Id.ToString()));
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 await HttpContext.SignInAsync(claimsPrincipal);
