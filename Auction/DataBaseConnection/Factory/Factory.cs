@@ -9,14 +9,35 @@ namespace Auction.DataBaseConnection.Factory
 {
     public static class Factory
     {
-        public static (int, int) GetProfileIdAndMaxBet(SQLiteDataReader dataReader)
+        public static int GetLotOwnerId(SQLiteDataReader dataReader)
         {
+            int profile_Id = 0;
+            while (dataReader.Read())
+            { 
+                profile_Id= dataReader.GetInt32(0);
+            }
+            return profile_Id;
+        }
+        public static int GetProfileBalanace(SQLiteDataReader dataReader)
+        {
+            int balanace = 0;
+            while (dataReader.Read())
+            { 
+                balanace = dataReader.GetInt32(0);
+            }
+            return balanace;
+        }
+
+        public static List<(int, int)> GetProfileIdAndMaxBet(SQLiteDataReader dataReader)
+        {
+            List<(int, int)> list = new List<(int, int)>();
             var idAndMaxBet=(0,0);
             while (dataReader.Read())
             {
                 idAndMaxBet = (dataReader.GetInt32(0),dataReader.GetInt32(1));
+                list.Add(idAndMaxBet);
             }
-            return idAndMaxBet;
+            return list;
         }
         public static List<(int,string)> GetEndOfAuctionDate(SQLiteDataReader dataReader)
         {
@@ -28,7 +49,7 @@ namespace Auction.DataBaseConnection.Factory
             }
             return list;
         }
-        public static List<Account> GetProfielInformation(SQLiteDataReader dataReader)
+        public static List<Account> GetProfileInformation(SQLiteDataReader dataReader)
         {
             List<Account> list = new List<Account>();
             while (dataReader.Read())
@@ -96,10 +117,12 @@ namespace Auction.DataBaseConnection.Factory
         {
             DatabaseConnection.UpdateLotSodlOut(lotId);
         }
-        public static void UpdateCurrentPrice(int lotId)
+
+        public static void UpdateProfileBalanace(int profileId, int newBalanace)
         {
-            
+            DatabaseConnection.UpdateProfileBalanace(profileId,newBalanace);
         }
+
     }
     
 }

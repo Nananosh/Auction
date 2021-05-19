@@ -42,7 +42,7 @@ namespace Auction.Controllers
         public async Task<IActionResult> Login(Account account, string returnUrl)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            var listUser = Factory.GetProfielInformation(DatabaseConnection.GetProfielInformation());
+            var listUser = Factory.GetProfileInformation(DatabaseConnection.GetProfileInformation());
             Account user = null;
             foreach (var u in listUser)
             {

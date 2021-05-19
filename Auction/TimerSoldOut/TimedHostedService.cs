@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Threading;
 using System.Threading.Tasks;
 using Auction.DataBaseConnection;
@@ -24,18 +25,9 @@ namespace Auction.TimerSoldOut
             _logger.LogInformation("Timed Hosted Service running.");
 
             _timer = new Timer(SoldOutTimer,null, TimeSpan.Zero, 
-                TimeSpan.FromSeconds(5));
+                TimeSpan.FromSeconds(60));
 
             return Task.CompletedTask;
-        }
-        
-
-        private void DoWork(object state)
-        {
-            var count = Interlocked.Increment(ref executionCount);
-
-            _logger.LogInformation(
-                "Timed Hosted Service is working. Count: {Count}", count);
         }
 
         public Task StopAsync(CancellationToken stoppingToken)
@@ -64,9 +56,41 @@ namespace Auction.TimerSoldOut
                 if (lotdateTime <= DateTime.Today)
                 {
                     var profileIdAndMaxBet = Factory.GetProfileIdAndMaxBet(DatabaseConnection.GetProfileIdAndMaxBet(lotId));
-                    Factory.UpdateLotOwners(profileIdAndMaxBet.Item1,lotId);
-                    Factory.UpdateLotSodlOut(lotId);
-                    Console.WriteLine("Сработало");
+                    for (int i = 0; i < profileIdAndMaxBet.Count; i++)
+                    {
+                        //Factory.GetProfileBalanace(DatabaseConnection.GetProfileBalanace(profileIdAndMaxBet[i].Item1)) >=
+                        //profileIdAndMaxBet[i].Item2 || 
+                        // if (profileIdAndMaxBet[i].Item1 ==
+                        //     Factory.GetLotOwnerId(DatabaseConnection.GetLotOwnerId(lotId)))
+                        // {
+                            if (profileIdAndMaxBet[i].Item1 ==
+                                Factory.GetLotOwnerId(DatabaseConnection.GetLotOwnerId(lotId)))
+                            {
+                                Factory.UpdateLotOwners(profileIdAndMaxBet[i].Item1,lotId);
+                                Factory.UpdateLotSodlOut(lotId);
+                                Console.WriteLine("Лот вернулся создателю");
+                            }
+                            else
+                            {
+                                
+                                Factory.UpdateLotOwners(profileIdAndMaxBet[i].Item1,lotId);
+                                Factory.UpdateLotSodlOut(lotId);
+                                Factory.UpdateProfileBalanace(profileIdAndMaxBet[i].Item1,(Factory.GetProfileBalanace(DatabaseConnection.GetProfileBalanace(profileIdAndMaxBet[i].Item1))-profileIdAndMaxBet[i].Item2));
+                                profileIdAndMaxBet.RemoveAt(i);
+                                for (int j = 0; j < profileIdAndMaxBet.Count; j++)
+                                {
+                                    if(profileIdAndMaxBet[j].Item1 !=
+                                       Factory.GetLotOwnerId(DatabaseConnection.GetLotOwnerId(lotId)))
+                                    Factory.UpdateProfileBalanace(profileIdAndMaxBet[j].Item1,(Factory.GetProfileBalanace(DatabaseConnection.GetProfileBalanace(profileIdAndMaxBet[j].Item1))+profileIdAndMaxBet[j].Item2));
+                                }
+                                break;
+                            }
+                        // }
+                        // else
+                        // {
+                        //     Console.WriteLine("Баланса нет");
+                        // }
+                    }
                 }
                 else
                 {

@@ -11,7 +11,7 @@ namespace Auction.DataBaseConnection
     {
         private readonly static SQLiteConnection _connection =
             DatabaseConnectionManager.GetSqlConnection().OpenAndReturn();
-        public static SQLiteDataReader GetProfielInformation()
+        public static SQLiteDataReader GetProfileInformation()
         {
             using var command = _connection.CreateCommand();
             command.Connection = _connection;
@@ -25,7 +25,13 @@ namespace Auction.DataBaseConnection
             command.CommandText = $"SELECT id,name,description,image,start_price,sold_out,ending_date,max(bet_price) as bet_price FROM lots lots LEFT JOIN bets b on lots.id = b.lot_id group by lot_id;";
             return command.ExecuteReader();
         }
-        
+        public static SQLiteDataReader GetProfileBalanace(int profileId)
+        {
+            using var command = _connection.CreateCommand();
+            command.Connection = _connection;
+            command.CommandText = $"SELECT balanace FROM profiles WHERE id={profileId}";
+            return command.ExecuteReader();
+        }
         public static SQLiteDataReader GetLastLotId()
         {
             using var command = _connection.CreateCommand();
@@ -33,11 +39,19 @@ namespace Auction.DataBaseConnection
             command.CommandText = $"SELECT max(id) FROM lots;";
             return command.ExecuteReader();
         }
+
+        public static SQLiteDataReader GetLotOwnerId(int lotId)
+        {
+            using var command = _connection.CreateCommand();
+            command.Connection = _connection;
+            command.CommandText = $"SELECT profile_id FROM lot_owners where lot_id={lotId};";
+            return command.ExecuteReader();
+        }
         public static SQLiteDataReader GetProfileIdAndMaxBet(int lotId)
         {
             using var command = _connection.CreateCommand();
             command.Connection = _connection;
-            command.CommandText = $"SELECT b.profile_id, max(bet_price) as bet_price FROM lots lots LEFT JOIN bets b on lots.id = b.lot_id where lot_id={lotId} group by lot_id;";
+            command.CommandText = $"SELECT profile_id,bet_price FROM bets Where lot_id={lotId} order by bet_price desc;";
             return command.ExecuteReader();
         } 
         public static SQLiteDataReader GetEndOfAuctionDate()
@@ -123,12 +137,15 @@ namespace Auction.DataBaseConnection
             Console.WriteLine(command.CommandText);
             command.ExecuteNonQuery();
         }
-        public static void UpdateProfielBalanace(int newBalanace)
+
+        public static void UpdateProfileBalanace(int profileId,int newBalanace)
         {
             using var command = _connection.CreateCommand();
             command.Connection = _connection;
-            command.CommandText = $"Update profile Set balanace = newBanace";
-            command.Parameters.AddWithValue("balanace", newBalanace);
+            command.CommandText = $"Update profiles Set balanace = :newBalanace where id=:profileId ";
+            command.Parameters.AddWithValue("newBalanace", newBalanace);
+            command.Parameters.AddWithValue("profileId", profileId);
+            command.ExecuteNonQuery();
         }
     }
 }
