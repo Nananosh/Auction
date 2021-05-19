@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Auction.Controllers;
-
+﻿
 namespace Auction.Models
 {
     public class Account

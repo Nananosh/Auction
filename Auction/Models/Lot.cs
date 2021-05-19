@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace Auction.Models
 {
     public class Lot

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Entity.Core.Metadata.Edm;
 using System.Threading;
 using System.Threading.Tasks;
 using Auction.DataBaseConnection;
@@ -58,43 +57,19 @@ namespace Auction.TimerSoldOut
                     var profileIdAndMaxBet = Factory.GetProfileIdAndMaxBet(DatabaseConnection.GetProfileIdAndMaxBet(lotId));
                     for (int i = 0; i < profileIdAndMaxBet.Count; i++)
                     {
-                        //Factory.GetProfileBalanace(DatabaseConnection.GetProfileBalanace(profileIdAndMaxBet[i].Item1)) >=
-                        //profileIdAndMaxBet[i].Item2 || 
-                        // if (profileIdAndMaxBet[i].Item1 ==
-                        //     Factory.GetLotOwnerId(DatabaseConnection.GetLotOwnerId(lotId)))
-                        // {
-                            if (profileIdAndMaxBet[i].Item1 ==
-                                Factory.GetLotOwnerId(DatabaseConnection.GetLotOwnerId(lotId)))
+                        var lotCreator = Factory.GetLotOwnerId(DatabaseConnection.GetLotOwnerId(lotId));
+                        if (profileIdAndMaxBet[i].Item1 == lotCreator)
                             {
-                                Factory.UpdateLotOwners(profileIdAndMaxBet[i].Item1,lotId);
-                                Factory.UpdateLotSodlOut(lotId);
-                                Console.WriteLine("Лот вернулся создателю");
+                                UpdateLotOwnersAndSoldOutInformation.UpdateLotOwnersAndSoldOut(profileIdAndMaxBet[i].Item1,lotId);
                             }
                             else
                             {
-                                
-                                Factory.UpdateLotOwners(profileIdAndMaxBet[i].Item1,lotId);
-                                Factory.UpdateLotSodlOut(lotId);
-                                Factory.UpdateProfileBalanace(profileIdAndMaxBet[i].Item1,(Factory.GetProfileBalanace(DatabaseConnection.GetProfileBalanace(profileIdAndMaxBet[i].Item1))-profileIdAndMaxBet[i].Item2));
+                                UpdateLotOwnersAndSoldOutInformation.UpdateLotOwnersAndSoldOut(profileIdAndMaxBet[i].Item1,lotId);
                                 profileIdAndMaxBet.RemoveAt(i);
-                                for (int j = 0; j < profileIdAndMaxBet.Count; j++)
-                                {
-                                    if(profileIdAndMaxBet[j].Item1 !=
-                                       Factory.GetLotOwnerId(DatabaseConnection.GetLotOwnerId(lotId)))
-                                    Factory.UpdateProfileBalanace(profileIdAndMaxBet[j].Item1,(Factory.GetProfileBalanace(DatabaseConnection.GetProfileBalanace(profileIdAndMaxBet[j].Item1))+profileIdAndMaxBet[j].Item2));
-                                }
+                                UpdateLotOwnersAndSoldOutInformation.ReturnProfileBalance(profileIdAndMaxBet,lotCreator);
                                 break;
                             }
-                        // }
-                        // else
-                        // {
-                        //     Console.WriteLine("Баланса нет");
-                        // }
                     }
-                }
-                else
-                {
-                    Console.WriteLine("Не робит");
                 }
             }
         }

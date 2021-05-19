@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.SQLite;
 using Auction.Models;
-using Microsoft.AspNetCore.Identity;
 
 namespace Auction.DataBaseConnection
 {

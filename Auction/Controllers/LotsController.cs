@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Common.CommandTrees;
-using System.Reflection.Metadata.Ecma335;
 using Auction.DataBaseConnection;
 using Auction.DataBaseConnection.Factory;
 using Auction.Models;
