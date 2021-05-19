@@ -1,0 +1,55 @@
+drop table bets;
+drop table lot_owners;
+drop table lots;
+drop table profiles;
+SELECT * FROM bets order by bet_price desc ;
+SELECT * FROM lot_owners;
+SELECT * FROM lots;
+SELECT * FROM profiles;
+INSERT INTO profiles(nickname, password, balanace) VALUES('Nikita1', 123,0),('Nikita2', 123,0),('Nikita3', 123,300);
+UPDATE lots SET sold_out=0 where id=1;
+UPDATE lots SET sold_out=0 where id=2;
+UPDATE profiles SET balanace=0 where id=1;
+UPDATE profiles SET balanace=300 where id=2;
+UPDATE profiles SET balanace=0 where id=3;
+
+
+
+SELECT id,name,bet_price as bet_price FROM lots lots LEFT JOIN bets b on lots.id = b.lot_id where b.bet_price< (SELECT max(bet_price) FROM bets where lot_id=4) group by lot_id;
+SELECT id,name,description,image,start_price,sold_out,ending_date,max(bet_price) as bet_price FROM lots lots LEFT JOIN bets b on lots.id = b.lot_id group by lot_id;
+SELECT id,name,description,image,start_price,sold_out,ending_date,bet_price<max(bet_price) as bet_price FROM lots lots LEFT JOIN bets b on lots.id = b.lot_id group by lot_id;
+create table profiles
+(
+    id integer not null primary key autoincrement ,
+    nickname text unique,
+    password text not null,
+    balanace integer
+);
+
+create table lots
+(
+    id integer not null primary key autoincrement,
+    name text not null,
+    description text,
+    image text,
+    start_price int,
+    sold_out int,
+    ending_date text not null
+);
+
+create table lot_owners
+(
+    profile_id integer,
+    lot_id integer,
+    foreign key(profile_id) references profiles(id),
+    foreign key(lot_id) references lots(id)
+);
+
+create table bets
+(
+    profile_id integer,
+    lot_id integer,
+    bet_price integer,
+    foreign key(profile_id) references profiles(id),
+    foreign key(lot_id) references lots(id)
+);
