@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model dynamic
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -46,24 +47,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <title>New Store A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
 </head>
 <body>
-<div class="content">
+<div class="content" style="flex: 1 0 auto;">
 	<div class="container">
 		<div class="content-top">
-			<h1>NEW RELEASED</h1>
+			<h1>Последние добавления</h1>
 			<div class="grid-in">
 				@foreach (var lot in ViewBag.Lots)
 				{
 					<div class="col-md-4 grid-top">
-						<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="@lot.Image" alt="" width="225" height="22">
+						<a a class="b-link-stripe b-animate-go  thickbox" asp-controller="Lots" asp-action="Lot" asp-route-lotId="@lot.Id" ><img class="img-responsive" src="@lot.Image" alt="">
 							<div class="b-wrapper">
 								<h3 class="b-animate b-from-left    b-delay03 ">
-									<span>@lot.Name</span>
+									<span>@lot.CurrentPrice$</span>
 								</h3>
 							</div>
 						</a>
-						<p><a href="single.html">ss</a></p>
+						<p><a href="single.html">@lot.Name</a></p>
 					</div>
-				}
+				}	
 				<div class="clearfix"> </div>
 			</div>
 		</div>

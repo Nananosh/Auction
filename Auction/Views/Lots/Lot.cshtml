@@ -1,0 +1,51 @@
+﻿@using Auction.DataBaseConnection
+@using Auction.DataBaseConnection.Factory
+@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div class="container">
+	<div class="content-top">
+		@foreach (var lot in Factory.GetLot(DatabaseConnection.GetLotInformation(@ViewBag.LotId)))
+		{
+			<div class="col-md-9 product-price1">
+			<div class="col-md-5 single-top">
+				<img class="img-responsive" src="@lot.Image" alt="">
+			</div>
+			<div class="col-md-7 single-top-in simpleCart_shelfItem">
+				<div class="single-para ">
+					<h4>@lot.Name</h4>
+					<h3 style="color: blue">@lot.EndOfAuctionDate</h3>
+					<h5 class="item_price">$@lot.CurrentPrice</h5>
+					<br>
+					@if (User.Identity.IsAuthenticated)
+					{
+						<div class="col-md-6 register-bottom-grid" align="center">
+							<form method="post" action="Bet">
+								<input type="hidden" value="@foreach (var c in User.Claims){@c.Value;}" name="ProfileId"/>
+								<input type="hidden" value="@ViewBag.lotId.ToString()" name="LotId"/>
+								<input type="text" value="@(lot.CurrentPrice + (lot.CurrentPrice / 100 * 5))" name="Bet"/>
+								<input type="submit" value="Bet"/>
+							</form></div>
+							      <br> <h3>Введите вашу ставку</h3>
+						<br><br><br>
+					}
+				</div>
+				<br>
+				<h4>@lot.Description</h4>
+			</div>
+			<div class="clearfix"> </div>
+				<!---->
+				<br>
+			</div>
+		}
+	</div></div>
+</body>
+</html>

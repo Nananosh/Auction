@@ -23,7 +23,15 @@ namespace Auction.DataBaseConnection
             command.CommandText = $"select id,nickname,password,balanace from profiles";
             return command.ExecuteReader();
         }
-        public static SQLiteDataReader GetLotInformation()
+
+        public static SQLiteDataReader GetLotInformation(int lotId)
+        {
+            using var command = _connection.CreateCommand();
+            command.Connection = _connection;
+            command.CommandText = $"SELECT id,name,description,image,start_price,sold_out,ending_date,max(bet_price) as bet_price FROM lots lots LEFT JOIN bets b on lots.id = b.lot_id where id={lotId} group by lot_id;";
+            return command.ExecuteReader();
+        }
+        public static SQLiteDataReader GetAllLotInformation()
         {
             using var command = _connection.CreateCommand();
             command.Connection = _connection;

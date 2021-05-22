@@ -56,3 +56,4 @@ C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Shared
 C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Lots\CreateLot.cshtml.g.cs
 C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Lots\Lot.cshtml.g.cs

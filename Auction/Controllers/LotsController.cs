@@ -4,6 +4,7 @@ using Auction.DataBaseConnection.Factory;
 using Auction.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace Auction.Controllers
 {
@@ -13,8 +14,14 @@ namespace Auction.Controllers
         // GET
         public IActionResult Index()
         {
-            var lots = Factory.GetAllLots(DatabaseConnection.GetLotInformation());
+            var lots = Factory.GetAllLots(DatabaseConnection.GetAllLotInformation());
             ViewBag.lots = lots;
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Lot(int lotId)
+        {
+            ViewBag.LotId = lotId;
             return View();
         }
         [HttpGet]
@@ -25,25 +32,26 @@ namespace Auction.Controllers
             return View();
         }
         [HttpPost]
-        public void Bet(Bets bets)
+        public IActionResult Bet(Bets bets)
         {
             Factory.InsertBets(bets.ProfileId,bets.LotId,bets.Bet);
             Console.WriteLine($"{bets.ProfileId},{bets.LotId},{bets.Bet}");
+            return Redirect("/");
         }
         [HttpGet]
         [Authorize]
         public IActionResult CreateLot()
         {
-            var lastLotId = Factory.GetLastLotId(DatabaseConnection.GetLotInformation());
+            var lastLotId = Factory.GetLastLotId(DatabaseConnection.GetAllLotInformation());
             ViewBag.LastLotId = lastLotId+1;
             return View();
         }
         [HttpPost]
-        public void CreateLot(Lot lot, int profileId)
+        public IActionResult CreateLot(Lot lot, int profileId)
         {
             Factory.InsertLots(lot, profileId);
             Factory.InsertLotOwners(profileId,lot.Id);
-            Console.WriteLine(lot);
+            return Redirect("/");
         }
     }
 }

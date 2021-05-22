@@ -74,6 +74,24 @@ namespace Auction.DataBaseConnection.Factory
             }
             return list;
         }
+
+        public static List<Lot> GetLot(SQLiteDataReader dataReader)
+        {
+            List<Lot> list = new List<Lot>();
+            while (dataReader.Read())
+            {
+                var id = dataReader.GetInt32(0);
+                var name = dataReader.GetString(1);
+                var description = dataReader.GetString(2);
+                var image = dataReader.GetString(3);
+                var startPrice = dataReader.GetInt32(4);
+                var currentPrice = dataReader.GetInt32(7);
+                var soldOut = dataReader.GetInt32(5);
+                var endingDate = dataReader.GetString(6);
+                list.Add(new Lot(id,name,description,image,startPrice,currentPrice,soldOut,endingDate));
+            }
+            return list;
+        }
         public static List<Lot> GetAllLots(SQLiteDataReader dataReader)
         {
             List<Lot> list = new List<Lot>();
