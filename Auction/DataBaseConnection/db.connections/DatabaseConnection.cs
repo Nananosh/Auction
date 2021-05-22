@@ -8,7 +8,15 @@ namespace Auction.DataBaseConnection
     {
         private readonly static SQLiteConnection _connection =
             DatabaseConnectionManager.GetSqlConnection().OpenAndReturn();
-        public static SQLiteDataReader GetProfileInformation()
+
+        public static SQLiteDataReader GetProfileInformation(int profileId)
+        {
+            using var command = _connection.CreateCommand();
+            command.Connection = _connection;
+            command.CommandText = $"select id,nickname,password,balanace from profiles where id={profileId}";
+            return command.ExecuteReader();
+        }
+        public static SQLiteDataReader GetAllProfileInformation()
         {
             using var command = _connection.CreateCommand();
             command.Connection = _connection;
@@ -58,8 +66,6 @@ namespace Auction.DataBaseConnection
             command.CommandText = $"SELECT id,ending_date FROM lots where sold_out=0";
             return command.ExecuteReader();
         }
-        
-
         public static void InsertBets(int profileId, int lotId, int bet)
         {
             using var command = _connection.CreateCommand();
@@ -111,7 +117,7 @@ namespace Auction.DataBaseConnection
             command.CommandText = $"INSERT INTO profiles(nickname,password,balanace) VALUES (:nickname,:password,:balanace);";
             command.Parameters.AddWithValue("nickname", account.Nickname);
             command.Parameters.AddWithValue("password", account.Password);
-            command.Parameters.AddWithValue("balanace", account.Balanace);
+            command.Parameters.AddWithValue("balanace", 0);
             Console.WriteLine(command.CommandText);
             command.ExecuteNonQuery();
         }

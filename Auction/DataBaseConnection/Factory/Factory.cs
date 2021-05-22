@@ -47,7 +47,21 @@ namespace Auction.DataBaseConnection.Factory
             }
             return list;
         }
+    
         public static List<Account> GetProfileInformation(SQLiteDataReader dataReader)
+        {
+            List<Account> list = new List<Account>();
+            while (dataReader.Read())
+            {
+                var id = dataReader.GetInt32(0);
+                var nickname = dataReader.GetString(1);
+                var password = dataReader.GetString(2);
+                var balanace = dataReader.GetInt32(3);
+                list.Add(new Account(id,nickname,password,balanace));
+            }
+            return list;
+        }
+        public static List<Account> GetAllProfileInformation(SQLiteDataReader dataReader)
         {
             List<Account> list = new List<Account>();
             while (dataReader.Read())

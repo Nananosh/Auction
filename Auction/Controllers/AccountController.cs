@@ -21,12 +21,13 @@ namespace Auction.Controllers
         }
 
         [HttpPost]
-        public void Register(Account account)
+        public IActionResult Register(Account account)
         {
             if (ModelState.IsValid)
             {
                 Factory.InsertProfile(account);
             }
+            return Redirect("/");
         }
         [HttpGet("login")]
         public IActionResult Login(string returnUrl)
@@ -37,8 +38,7 @@ namespace Auction.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(Account account, string returnUrl)
         {
-            ViewData["ReturnUrl"] = returnUrl;
-            var listUser = Factory.GetProfileInformation(DatabaseConnection.GetProfileInformation());
+            ViewData["ReturnUrl"] = returnUrl; var listUser = Factory.GetAllProfileInformation(DatabaseConnection.GetAllProfileInformation());
             Account user = null;
             foreach (var u in listUser)
             {

@@ -1,50 +1,74 @@
-﻿@using Auction.Models
-@using Auction.TimerSoldOut
-@model dynamic
+﻿@model dynamic
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!DOCTYPE html>
+@*     <table> *@
+@*         <tr> *@
+@*             <td>Имя</td> *@
+@*             <td>Описание</td> *@
+@*             <td>Цена</td> *@
+@*             <td>Дата окончания</td> *@
+@*             <td>Текущая ставка</td> *@
+@*             <td></td> *@
+@*         </tr> *@
+         @* @foreach (var x in ViewBag.Lots) *@
+         @* { *@
+         @*     <tr> *@
+         @*         <td> *@
+         @*             <p>@x.Name</p></td> *@
+         @*         <td> *@
+         @*             <p>@x.Description</p></td> *@
+         @*         <td> *@
+         @*             <p>@x.StartPrice</p></td> *@
+         @*         <td> *@
+         @*             <p>@x.EndOfAuctionDate</p></td> *@
+         @*         <td> *@
+         @*             <p>@x.CurrentPrice</p></td> *@
+         @*         <td><a href="/Lots/Bet?lotId=@x.Id">Сделать ставку</a></td> *@
+         @*     </tr> *@
+         @* } *@
+@*     </table> *@
 
+
+
+
+
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
 <html>
 <head>
-    <title>title</title>
+<title>New Store A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
 </head>
 <body>
-
-;
-<a href="/Account/Register">Зарегистрироваться</a>
-<a href="/Account/LogOut">Выйти</a>
-<div><td><a href="/Lots/CreateLot">Добавить лот</a></td></div>
-<div class="Lot">
-    <table>
-        <tr>
-            <td>Имя</td>
-            <td>Описание</td>
-            <td>Цена</td>
-            <td>Дата окончания</td>
-            <td>Текущая ставка</td>
-            <td></td>
-        </tr>
-        @foreach (var x in ViewBag.Lots)
-        {
-            <tr>
-                <td>
-                    <p>@x.Name</p></td>
-                <td>
-                    <p>@x.Description</p></td>
-                <td>
-                    <p>@x.StartPrice</p></td>
-                <td>
-                    <p>@x.EndOfAuctionDate</p></td>
-                <td>
-                    <p>@x.CurrentPrice</p></td>
-                <td><a href="/Lots/Bet?lotId=@x.Id">Сделать ставку</a></td>
-            </tr>
-        }
-    </table>
-
+<div class="content">
+	<div class="container">
+		<div class="content-top">
+			<h1>NEW RELEASED</h1>
+			<div class="grid-in">
+				@foreach (var lot in ViewBag.Lots)
+				{
+					<div class="col-md-4 grid-top">
+						<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="@lot.Image" alt="" width="225" height="22">
+							<div class="b-wrapper">
+								<h3 class="b-animate b-from-left    b-delay03 ">
+									<span>@lot.Name</span>
+								</h3>
+							</div>
+						</a>
+						<p><a href="single.html">ss</a></p>
+					</div>
+				}
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>
+			

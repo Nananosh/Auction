@@ -1,30 +1,51 @@
 ﻿@model dynamic
 
 @{
-    Layout = null;
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
     var returnUrl = ViewData["ReturnUrl"] as string;
     var error = TempData["Error"] as string;
 }
+@* <div> *@
+@*     <h1>Вход</h1> *@
+@*     @if (!string.IsNullOrEmpty(error)) *@
+@*     { *@
+@*         <h2 class="alert-danger" style="padding: 10px;">@error</h2> *@
+@*     } *@
+@*     <form action="/login?ReturnUrl=@System.Net.WebUtility.UrlEncode(returnUrl)" method="post"> *@
+@*         <input type="text" name="Nickname" placeholder="Nickname"/> *@
+@*         <input type="password" name="Password" placeholder="Password"/> *@
+@*         <input type="submit" value="login"/> *@
+@*     </form> *@
+@* </div> *@
 <!DOCTYPE html>
 
 <html>
 <head>
-    <title>Вход</title>
+    <title>Login</title>
 </head>
 <body>
-<div>
-    <h1>Вход</h1>
-    @if (!string.IsNullOrEmpty(error))
-    {
-        <h2 class="alert-danger" style="padding: 10px;">@error</h2>
-    }
-    <form action="/login?ReturnUrl=@System.Net.WebUtility.UrlEncode(returnUrl)" method="post">
-        <input type="text" name="Nickname" placeholder="Nickname"/>
-        <input type="password" name="Password" placeholder="Password"/>
-        <input type="submit" value="login"/>
-    </form>
+<div class="container">
+		<div class="account">
+		<h1>Account</h1>
+		<div class="account-pass">
+		<div class="col-md-8 account-top">
+			<form action="/login?ReturnUrl=@System.Net.WebUtility.UrlEncode(returnUrl="/")" method="post">
+				<div> 	
+					<span>NickName</span>
+					<input type="text" name="Nickname"/> 
+			</div>
+			<div> 
+				<span >Password</span>
+				<input type="password" name="Password"/>
+			</div>				
+				<input type="submit" value="login"/> 
+			</form>
+		</div>
+			<div class="clearfix"> </div>
+	</div>
+	</div>
 </div>
 </body>
 </html>
