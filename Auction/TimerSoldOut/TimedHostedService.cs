@@ -55,9 +55,9 @@ namespace Auction.TimerSoldOut
                 if (lotdateTime <= DateTime.Today)
                 {
                     var profileIdAndMaxBet = Factory.GetProfileIdAndMaxBet(DatabaseConnection.GetProfileIdAndMaxBet(lotId));
+                    var lotCreator = Factory.GetLotOwnerId(DatabaseConnection.GetLotOwnerId(lotId));
                     for (int i = 0; i < profileIdAndMaxBet.Count; i++)
                     {
-                        var lotCreator = Factory.GetLotOwnerId(DatabaseConnection.GetLotOwnerId(lotId));
                         if (profileIdAndMaxBet[i].Item1 == lotCreator)
                             {
                                 UpdateLotOwnersAndSoldOutInformation.UpdateLotOwnersAndSoldOut(profileIdAndMaxBet[i].Item1,lotId);
@@ -65,6 +65,7 @@ namespace Auction.TimerSoldOut
                             else
                             {
                                 UpdateLotOwnersAndSoldOutInformation.UpdateLotOwnersAndSoldOut(profileIdAndMaxBet[i].Item1,lotId);
+                                UpdateLotOwnersAndSoldOutInformation.UpdateLowCreatorBalance(lotCreator,profileIdAndMaxBet[i].Item2);
                                 profileIdAndMaxBet.RemoveAt(i);
                                 UpdateLotOwnersAndSoldOutInformation.ReturnProfileBalance(profileIdAndMaxBet,lotCreator);
                                 break;

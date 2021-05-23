@@ -12,19 +12,24 @@ namespace Auction.TimerSoldOut
             Factory.UpdateLotSodlOut(lotId);
         }
 
+        public static void UpdateLowCreatorBalance(int lotCreator, int maxBet)
+        {
+            Factory.UpdateProfileBalanace(lotCreator,(Factory.GetProfileBalanace(DatabaseConnection.GetProfileBalanace(lotCreator))+maxBet));
+
+        }
+
         public static void ReturnProfileBalance(List<(int, int)> profileIdAndMaxBet,int lotCreator)
         {
             for (int i = 0; i < profileIdAndMaxBet.Count; i++)
             {
-                if (profileIdAndMaxBet[i].Item1 !=
+                if (profileIdAndMaxBet[i].Item1 ==
                     lotCreator)
                 {
-                    Factory.UpdateProfileBalanace(profileIdAndMaxBet[i].Item1,(Factory.GetProfileBalanace(DatabaseConnection.GetProfileBalanace(profileIdAndMaxBet[i].Item1))+profileIdAndMaxBet[i].Item2));
-
+                    continue;
                 }
                 else
                 {
-                    break;
+                    Factory.UpdateProfileBalanace(profileIdAndMaxBet[i].Item1,(Factory.GetProfileBalanace(DatabaseConnection.GetProfileBalanace(profileIdAndMaxBet[i].Item1))+profileIdAndMaxBet[i].Item2));
                 }
             }
         }

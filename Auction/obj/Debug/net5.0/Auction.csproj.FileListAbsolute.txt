@@ -57,3 +57,7 @@ C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Lots\C
 C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Lots\Lot.cshtml.g.cs
+C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Lots\AllLots.cshtml.g.cs
+C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Lots\CheckBets.cshtml.g.cs
+C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Lots\PurchasedLots.cshtml.g.cs
+C:\Users\nanan\RiderProjects\Auction\Auction\obj\Debug\net5.0\Razor\Views\Lots\LotsAtAuction.cshtml.g.cs

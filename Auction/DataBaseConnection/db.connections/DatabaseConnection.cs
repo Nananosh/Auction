@@ -9,6 +9,27 @@ namespace Auction.DataBaseConnection
         private readonly static SQLiteConnection _connection =
             DatabaseConnectionManager.GetSqlConnection().OpenAndReturn();
 
+        public static SQLiteDataReader GetProfileLots(int profileId, int soldOut)
+        {
+            using var command = _connection.CreateCommand();
+            command.Connection = _connection;
+            command.CommandText = $"SELECT lot_owners.profile_id, lot_owners.lot_id,name,image,max(bet_price) FROM lot_owners JOIN lots l on l.id = lot_owners.lot_id JOIN bets b on lot_owners.lot_id = b.lot_id WHERE lot_owners.profile_id={profileId} and sold_out={soldOut} GROUP BY b.lot_id;";
+            return command.ExecuteReader();
+        }
+        public static SQLiteDataReader GetProfileNickname(string nickname)
+        {
+            using var command = _connection.CreateCommand();
+            command.Connection = _connection;
+            command.CommandText = $"SELECT * FROM profiles where nickname={nickname}";
+            return command.ExecuteReader();
+        }
+        public static SQLiteDataReader GetBets(int profileId)
+        {
+            using var command = _connection.CreateCommand();
+            command.Connection = _connection;
+            command.CommandText = $"SELECT lot_id,bet_price,name,image FROM bets JOIN lots l on l.id = bets.lot_id WHERE profile_id={profileId};";
+            return command.ExecuteReader();
+        }
         public static SQLiteDataReader GetProfileInformation(int profileId)
         {
             using var command = _connection.CreateCommand();

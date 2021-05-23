@@ -13,63 +13,57 @@
 @*             <td>Текущая ставка</td> *@
 @*             <td></td> *@
 @*         </tr> *@
-         @* @foreach (var x in ViewBag.Lots) *@
-         @* { *@
-         @*     <tr> *@
-         @*         <td> *@
-         @*             <p>@x.Name</p></td> *@
-         @*         <td> *@
-         @*             <p>@x.Description</p></td> *@
-         @*         <td> *@
-         @*             <p>@x.StartPrice</p></td> *@
-         @*         <td> *@
-         @*             <p>@x.EndOfAuctionDate</p></td> *@
-         @*         <td> *@
-         @*             <p>@x.CurrentPrice</p></td> *@
-         @*         <td><a href="/Lots/Bet?lotId=@x.Id">Сделать ставку</a></td> *@
-         @*     </tr> *@
-         @* } *@
+@* @foreach (var x in ViewBag.Lots) *@
+@* { *@
+@*     <tr> *@
+@*         <td> *@
+@*             <p>@x.Name</p></td> *@
+@*         <td> *@
+@*             <p>@x.Description</p></td> *@
+@*         <td> *@
+@*             <p>@x.StartPrice</p></td> *@
+@*         <td> *@
+@*             <p>@x.EndOfAuctionDate</p></td> *@
+@*         <td> *@
+@*             <p>@x.CurrentPrice</p></td> *@
+@*         <td><a href="/Lots/Bet?lotId=@x.Id">Сделать ставку</a></td> *@
+@*     </tr> *@
+@* } *@
 @*     </table> *@
-
-
-
-
-
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 <head>
-<title>New Store A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
+    <title>New Store A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
 </head>
 <body>
 <div class="content" style="flex: 1 0 auto;">
-	<div class="container">
-		<div class="content-top">
-			<h1>Последние добавления</h1>
-			<div class="grid-in">
-				@foreach (var lot in ViewBag.Lots)
-				{
-					<div class="col-md-4 grid-top">
-						<a a class="b-link-stripe b-animate-go  thickbox" asp-controller="Lots" asp-action="Lot" asp-route-lotId="@lot.Id" ><img class="img-responsive" src="@lot.Image" alt="">
-							<div class="b-wrapper">
-								<h3 class="b-animate b-from-left    b-delay03 ">
-									<span>@lot.CurrentPrice$</span>
-								</h3>
-							</div>
-						</a>
-						<p><a href="single.html">@lot.Name</a></p>
-					</div>
-				}	
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="content-top">
+            <h1>Последние добавления</h1>
+            <div class="grid-in">
+                @foreach (var lot in ViewBag.Lots)
+                {
+                    if (lot.SoldOut == 0)
+                    {
+                        <div class="col-md-4 grid-top">
+                            <a a class="b-link-stripe b-animate-go  thickbox" asp-controller="Lots" asp-action="Lot" asp-route-lotId="@lot.Id">
+                                <img class="img-responsive" src="@lot.Image" alt="">
+                                <div class="b-wrapper">
+                                    <h3 class="b-animate b-from-left    b-delay03 ">
+                                        <span>@lot.CurrentPrice$</span>
+                                    </h3>
+                                </div>
+                            </a>
+                            <p>
+                                <a href="single.html">@lot.Name</a>
+                            </p>
+                        </div>
+                    }
+                }
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
-			

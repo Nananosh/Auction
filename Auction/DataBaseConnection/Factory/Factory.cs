@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SQLite;
 using Auction.Models;
 
@@ -7,47 +6,85 @@ namespace Auction.DataBaseConnection.Factory
 {
     public static class Factory
     {
+        public static List<(int, int, string, string,int)> GetProfileLots(SQLiteDataReader dataReader)
+        {
+            List<(int, int, string, string,int)> list = new List<(int, int, string, string,int)>();
+            while (dataReader.Read())
+            {
+                var profileIdAndlotIdAndNameLotAndImageAndMaxBetPrice = (dataReader.GetInt32(0), dataReader.GetInt32(1),
+                    dataReader.GetString(2), dataReader.GetString(3),dataReader.GetInt32(4));
+                list.Add(profileIdAndlotIdAndNameLotAndImageAndMaxBetPrice);
+            }
+            return list;
+        }
+        public static string GetProfileNickname(SQLiteDataReader dataReader)
+        {
+            string profileNickname = "";
+            while (dataReader.Read())
+            {
+                profileNickname = dataReader.GetString(1);
+            }
+            return profileNickname;
+        }
+        public static List<(int, int, string, string)> GetBets(SQLiteDataReader dataReader)
+        {
+            List<(int, int, string, string)> list = new List<(int, int, string, string)>();
+            while (dataReader.Read())
+            {
+                var lotIdAndBetPriceAndNameLotAndImage = (dataReader.GetInt32(0), dataReader.GetInt32(1),
+                    dataReader.GetString(2), dataReader.GetString(3));
+                list.Add(lotIdAndBetPriceAndNameLotAndImage);
+            }
+            list.Reverse();
+            return list;
+        }
+
         public static int GetLotOwnerId(SQLiteDataReader dataReader)
         {
             int profile_Id = 0;
             while (dataReader.Read())
-            { 
-                profile_Id= dataReader.GetInt32(0);
+            {
+                profile_Id = dataReader.GetInt32(0);
             }
+
             return profile_Id;
         }
+
         public static int GetProfileBalanace(SQLiteDataReader dataReader)
         {
             int balanace = 0;
             while (dataReader.Read())
-            { 
+            {
                 balanace = dataReader.GetInt32(0);
             }
+
             return balanace;
         }
 
         public static List<(int, int)> GetProfileIdAndMaxBet(SQLiteDataReader dataReader)
         {
             List<(int, int)> list = new List<(int, int)>();
-            var idAndMaxBet=(0,0);
+            var idAndMaxBet = (0, 0);
             while (dataReader.Read())
             {
-                idAndMaxBet = (dataReader.GetInt32(0),dataReader.GetInt32(1));
+                idAndMaxBet = (dataReader.GetInt32(0), dataReader.GetInt32(1));
                 list.Add(idAndMaxBet);
             }
             return list;
         }
-        public static List<(int,string)> GetEndOfAuctionDate(SQLiteDataReader dataReader)
+
+        public static List<(int, string)> GetEndOfAuctionDate(SQLiteDataReader dataReader)
         {
             List<(int lotId, string EndOfAuctionDate)> list = new List<(int lotId, string EndOfAuctionDate)>();
             while (dataReader.Read())
             {
-                var idAndEndDate  = (lotId :dataReader.GetInt32(0),EndOfAuctionDate:dataReader.GetString(1));
+                var idAndEndDate = (lotId: dataReader.GetInt32(0), EndOfAuctionDate: dataReader.GetString(1));
                 list.Add(idAndEndDate);
             }
+
             return list;
         }
-    
+
         public static List<Account> GetProfileInformation(SQLiteDataReader dataReader)
         {
             List<Account> list = new List<Account>();
@@ -57,10 +94,12 @@ namespace Auction.DataBaseConnection.Factory
                 var nickname = dataReader.GetString(1);
                 var password = dataReader.GetString(2);
                 var balanace = dataReader.GetInt32(3);
-                list.Add(new Account(id,nickname,password,balanace));
+                list.Add(new Account(id, nickname, password, balanace));
             }
+
             return list;
         }
+
         public static List<Account> GetAllProfileInformation(SQLiteDataReader dataReader)
         {
             List<Account> list = new List<Account>();
@@ -70,8 +109,9 @@ namespace Auction.DataBaseConnection.Factory
                 var nickname = dataReader.GetString(1);
                 var password = dataReader.GetString(2);
                 var balanace = dataReader.GetInt32(3);
-                list.Add(new Account(id,nickname,password,balanace));
+                list.Add(new Account(id, nickname, password, balanace));
             }
+
             return list;
         }
 
@@ -88,10 +128,12 @@ namespace Auction.DataBaseConnection.Factory
                 var currentPrice = dataReader.GetInt32(7);
                 var soldOut = dataReader.GetInt32(5);
                 var endingDate = dataReader.GetString(6);
-                list.Add(new Lot(id,name,description,image,startPrice,currentPrice,soldOut,endingDate));
+                list.Add(new Lot(id, name, description, image, startPrice, currentPrice, soldOut, endingDate));
             }
+
             return list;
         }
+
         public static List<Lot> GetAllLots(SQLiteDataReader dataReader)
         {
             List<Lot> list = new List<Lot>();
@@ -105,10 +147,12 @@ namespace Auction.DataBaseConnection.Factory
                 var currentPrice = dataReader.GetInt32(7);
                 var soldOut = dataReader.GetInt32(5);
                 var endingDate = dataReader.GetString(6);
-                list.Add(new Lot(id,name,description,image,startPrice,currentPrice,soldOut,endingDate));
+                list.Add(new Lot(id, name, description, image, startPrice, currentPrice, soldOut, endingDate));
             }
+
             return list;
         }
+
         public static int GetLastLotId(SQLiteDataReader dataReader)
         {
             int lastLotId = 0;
@@ -116,13 +160,15 @@ namespace Auction.DataBaseConnection.Factory
             {
                 lastLotId = dataReader.GetInt32(0);
             }
+
             return lastLotId;
         }
 
         public static void InsertBets(int profileId, int lotId, int bet)
         {
-            DatabaseConnection.InsertBets(profileId,lotId,bet);
+            DatabaseConnection.InsertBets(profileId, lotId, bet);
         }
+
         public static void InsertLots(Lot lot, int profileId)
         {
             DatabaseConnection.InsertLots(lot, profileId);
@@ -135,12 +181,12 @@ namespace Auction.DataBaseConnection.Factory
 
         public static void InsertLotOwners(int profileId, int lotId)
         {
-            DatabaseConnection.InsertLotOwners(profileId,lotId);
+            DatabaseConnection.InsertLotOwners(profileId, lotId);
         }
 
         public static void UpdateLotOwners(int profileId, int lotId)
         {
-            DatabaseConnection.UpdateLotOwners(profileId,lotId);
+            DatabaseConnection.UpdateLotOwners(profileId, lotId);
         }
 
         public static void UpdateLotSodlOut(int lotId)
@@ -150,9 +196,7 @@ namespace Auction.DataBaseConnection.Factory
 
         public static void UpdateProfileBalanace(int profileId, int newBalanace)
         {
-            DatabaseConnection.UpdateProfileBalanace(profileId,newBalanace);
+            DatabaseConnection.UpdateProfileBalanace(profileId, newBalanace);
         }
-
     }
-    
 }

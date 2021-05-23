@@ -33,9 +33,9 @@
 @*             <td><input type="submit" value="Отправить"/></td> *@
 @*         </tr> *@
 @*     </table> *@
-    <div class=" container">
+<div class=" container">
     <div class="register">
-    	<h1>Create Lot information</h1>
+        <h1>Create Lot information</h1>
         <form action="CreateLot" method="post">
             <input type="hidden" value="@foreach (var c in User.Claims){@c.Value;}" name="profileId"/>
             <input type="hidden" value="@ViewBag.LastLotId" name="Id"/>
@@ -61,11 +61,11 @@
                     <span>Введите дату окончания аукциона</span>
                     <input type="date" name="EndOfAuctionDate"/>
                 </div>
-                
+
                 <input type="submit" value="submit">
 
             </div>
             <div class="clearfix"> </div>
         </form>
-    			</div>
     </div>
+</div>

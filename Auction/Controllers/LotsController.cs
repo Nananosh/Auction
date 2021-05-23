@@ -18,6 +18,15 @@ namespace Auction.Controllers
             ViewBag.lots = lots;
             return View();
         }
+
+        public IActionResult LotsAtAuction()
+        {
+            return View();
+        }
+        public IActionResult PurchasedLots()
+        {
+            return View();
+        }
         [HttpGet]
         public IActionResult Lot(int lotId)
         {
@@ -32,11 +41,12 @@ namespace Auction.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Bet(Bets bets)
+        public IActionResult Bet(Bets bets, string returnUrl)
         {
+            Factory.UpdateProfileBalanace(bets.ProfileId,Factory.GetProfileBalanace(DatabaseConnection.GetProfileBalanace(bets.ProfileId))-bets.Bet);
             Factory.InsertBets(bets.ProfileId,bets.LotId,bets.Bet);
             Console.WriteLine($"{bets.ProfileId},{bets.LotId},{bets.Bet}");
-            return Redirect("/");
+            return Redirect(returnUrl);
         }
         [HttpGet]
         [Authorize]
@@ -52,6 +62,17 @@ namespace Auction.Controllers
             Factory.InsertLots(lot, profileId);
             Factory.InsertLotOwners(profileId,lot.Id);
             return Redirect("/");
+        }
+
+        public IActionResult AllLots()
+        {
+            var lots = Factory.GetAllLots(DatabaseConnection.GetAllLotInformation());
+            ViewBag.lots = lots;
+            return View();
+        }
+        public IActionResult CheckBets()
+        {
+            return View();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model dynamic
 
 @{
-	Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
     var returnUrl = ViewData["ReturnUrl"] as string;
@@ -27,25 +27,25 @@
 </head>
 <body>
 <div class="container">
-		<div class="account">
-		<h1>Account</h1>
-		<div class="account-pass">
-		<div class="col-md-8 account-top">
-			<form action="/login?ReturnUrl=@System.Net.WebUtility.UrlEncode(returnUrl="/")" method="post">
-				<div> 	
-					<span>NickName</span>
-					<input type="text" name="Nickname"/> 
-			</div>
-			<div> 
-				<span >Password</span>
-				<input type="password" name="Password"/>
-			</div>				
-				<input type="submit" value="login"/> 
-			</form>
-		</div>
-			<div class="clearfix"> </div>
-	</div>
-	</div>
+    <div class="account">
+        <h1>Account</h1>
+        <div class="account-pass">
+            <div class="col-md-8 account-top">
+                <form action="/login?ReturnUrl=@System.Net.WebUtility.UrlEncode(returnUrl = "/")" method="post">
+                    <div>
+                        <span>NickName</span>
+                        <input type="text" name="Nickname"/>
+                    </div>
+                    <div>
+                        <span >Password</span>
+                        <input type="password" name="Password"/>
+                    </div>
+                    <input type="submit" value="login"/>
+                </form>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
