@@ -1,4 +1,6 @@
 ﻿using System.Data.SQLite;
+using System.IO;
+
 namespace Auction.DataBaseConnection
 {
     public class DatabaseConnectionManager
@@ -9,9 +11,7 @@ namespace Auction.DataBaseConnection
 
         private static string GetConnectionString()
         {
-            // return $"Data Source={Path.GetFullPath("DatabaseConnection/zodiacs.sqlite")};"; TODO optimize
-            return
-                @"Data Source=C:\Users\nanan\RiderProjects\Auction\Auction\DataBaseConnection\auction.sqlite";
+            return $@"Data Source={Path.GetFullPath("DataBaseConnection/auction.sqlite")};";
         }
 
         public static SQLiteConnection GetSqlConnection()
